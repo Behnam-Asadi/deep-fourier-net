@@ -18,7 +18,6 @@ from functools import partial
 import idx2numpy
 import pickle
 import jax
-#import cv2
 import numpy
 
 import lmdb
@@ -678,7 +677,6 @@ optimizer = optax.multi_transform(
     param_labels)
 # learning_rate_function = optax.linear_schedule(init_value=step_size, end_value=step_size/100,
 #                                                    transition_steps=num_train_steps)
-# print(learning_rate_function(num_train_steps/2), 'learning_rate_function')
 
 if has_encoder:
     opt_state = optimizer.init((params, encoder_params))
