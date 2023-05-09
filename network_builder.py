@@ -31,13 +31,6 @@ def initialize_fnet(mlp_features ,fnet_features, key, encoder=[]):
     B_FC_params = initialize_network(mlp_features, B_FC_rngs)
     params = [A_FC_params, B_FC_params]
     encoder_params = initialize_network(encoder, encoder_rngs)
-
-    # params = jax.tree_map(lambda x: np.array([x] * jax.local_device_count()), params)
-
     K = [np.array(list(product(list(range(2)), repeat=fnet_features[i]))) / 32 for i in range(len(fnet_features) - 1)]
-    # K = jax.device_put_replicated(K, jax.local_devices())
-
-    # params = jax.device_put_sharded(params, jax.local_devices())
-    # print(params[0][0][0][3].shape, 'created')
 
     return params, K, f_layer_accumulate_params, encoder_params
