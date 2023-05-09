@@ -1,30 +1,17 @@
-# import torch
 import argparse
-# import torch.nn.parallel
 import torch.utils.data
-# import torchvision.datasets as dset
-# import torchvision.transforms as transforms
 import jax.numpy as np
 import matplotlib.pyplot as plt
-from jax import grad, jit, vmap, pmap, soft_pmap, value_and_grad
+from jax import jit, pmap, value_and_grad
 from jax import random
 import optax
-
-
-
 from typing import *
-from itertools import product, accumulate
+from itertools import accumulate
 from functools import partial
-import idx2numpy
-import pickle
 import jax
-#import cv2
 import numpy
-
-import lmdb
-import time, os, io, string
+import time, os
 from PIL import Image
-import tempfile
 from data_loader import load_cifar10
 from network_builder import initialize_fnet
 from network_forward_pass import batch_forward, forward_pass, forward_pass_with_code
@@ -105,13 +92,6 @@ def batches(grid_input, images, batch_size):
         batch_images = images[images_perm, ...].reshape(4, batch_size // 4, 32 * 32, 3)
         yield grid_input, batch_images, images_perm.reshape(4, batch_size // 4)
 
-    # global batchkey
-    # batchkey, subkey = random.split(batchkey)
-    # a = random.permutation(subkey, x.shape[0])
-    # for index in range(0, len(y)-size+1, size):
-    #   # yield x[a[index:index+size]], y[a[index:index+size]]
-    #   yield x[a[index:index+size]], y[a[index:index+size]]
-
 
 def mean_loss(params, K, f_layer_accumulate_params, fnet_features, encoder, inputs, image, batch_size):
     """ Compute the mean_loss for provided batches """
@@ -134,49 +114,28 @@ def batchless_mean_loss(params, K, f_layer_accumulate_params, fnet_features, z, 
     return acc_total / image.size
 
 
-# @partial(pmap, in_axes=(None, None, None, None, 0, None, 0), out_axes=None, axis_name='num_devices',
-#          static_broadcasted_argnums=(2, 3,))
-# def pmapped_loss_fn(params, K, f_layer_accumulate_params, fnet_features, z, inputs, targets):
-#     """ Compute the MSE """
-#     preds = batch_forward(params, K, f_layer_accumulate_params, fnet_features, z, inputs)
-#     return np.sum((preds - targets) ** 2)
-
-
 @partial(jit, static_argnums=(3, 4,))
 def loss_fn(params, encoder, K, f_layer_accumulate_params, fnet_features, inputs, targets, variation):
     """ Compute the MSE """
     preds, z = batch_forward(params, encoder, K, f_layer_accumulate_params, fnet_features, targets, inputs, variation)
     return np.sum((preds - targets) ** 2) + 300.0 * np.sum(z ** 2)
 
-
 @partial(jit, static_argnums=(2, 3,))
 def prediction(params, K, f_layer_accumulate_params, fnet_features, z, inputs):
     """ Predict the output image """
     preds, _ = batch_forward(params, K, f_layer_accumulate_params, fnet_features, z, inputs)
-    # return preds.reshape((28,28))
     return preds.reshape((32, 32, 3))
-    # return preds.reshape((400, 400, 3))
-    # return preds.reshape((466, 700, 3))
 
-
-# partial(pmap, in_axes=(None, None, None, None, None, None, None), out_axes=None, axis_name='num_devices',
-#          static_broadcasted_argnums=(2, 3,))
 def one_image_prediction(params, encoder, K, f_layer_accumulate_params, fnet_features, image, inputs):
     """ Predict the output image """
     variation = np.zeros((latent_size,))
     preds, _ = forward_pass(params, encoder, K, f_layer_accumulate_params, fnet_features, image, inputs, variation)
-    # return preds.reshape((28,28))
     return preds.reshape((32, 32, 3))
-    # return preds.reshape((400, 400, 3))
-    # return preds.reshape((466, 700, 3))
 
 def one_image_prediction_with_code(params, K, f_layer_accumulate_params, fnet_features, z, inputs):
     """ Predict the output image """
     preds  = forward_pass_with_code(params, K, f_layer_accumulate_params, fnet_features, z, inputs)
-    # return preds.reshape((28,28))
     return preds.reshape((32, 32, 3))
-    # return preds.reshape((400, 400, 3))
-    # return preds.reshape((466, 700, 3))
 
 
 @partial(pmap, in_axes=(None, None, None, None, None, None, 0, 0, None), out_axes=None,
@@ -187,8 +146,6 @@ def update(params, encoder, K, f_layer_accumulate_params, fnet_features, inputs,
     loss, (params_grads, encoder_grads) = value_and_grad(loss_fn, argnums=(0, 1))(params, encoder, K,
                                                                                      f_layer_accumulate_params,
                                                                                      fnet_features, inputs, images, variation)
-    # embs_grads = embs_grads.at[:].set(0)
-    # embs_grads = embs_grads.at[images_perm, ...].set(embs_batch_grads * 1e-5)
     (params_grads, encoder_grads) = jax.lax.pmean((params_grads, encoder_grads), axis_name='num_devices')
     loss = jax.lax.pmean(loss, axis_name='num_devices')
 
@@ -203,24 +160,15 @@ def run_training_loop(num_epochs, opt_state, params, encoder, K):
     # Initialize placeholder for loggin
     batch_size = batch_sizes[0]
     log_train_loss, log_train_batch_loss = [], []
-    # log_test_loss, log_test_batch_loss = [], []
-    # Get the initial set of parameters
-    # embs_grads = jax.device_put_replicated(embs_grads, jax.local_devices())
-    # Get initial mean_loss after random init
     train_loss = mean_loss(params, K, f_layer_accumulate_params, fnet_features, encoder, grid_input, images,
                            batch_size)
-    # test_loss = mean_loss(params, test_input, image)
     log_train_loss.append(train_loss)
-    # log_test_loss.append(test_loss)
     imshow(images[0].reshape((32, 32, 3)))
     imshow(one_image_prediction(params, encoder, K, f_layer_accumulate_params, fnet_features, images[0], grid_input))
     print(np.max(
         one_image_prediction(params, encoder, K, f_layer_accumulate_params, fnet_features, images[0], grid_input)))
     print(np.min(
         one_image_prediction(params, encoder, K, f_layer_accumulate_params, fnet_features, images[0], grid_input)))
-    # print(train_input.shape)
-    # print(prediction(params, input))
-    # Loop over the training epochs
     start_time = time.time()
     for epoch in range(num_epochs):
         for (data, target, images_perm) in batches(grid_input, images, batch_size):
@@ -228,15 +176,9 @@ def run_training_loop(num_epochs, opt_state, params, encoder, K):
             variation = random.normal(noise_latentkey, shape=(*target.shape[:2], latent_size)) * latent_noise
             params, encoder, opt_state, loss = update(params, encoder, K, f_layer_accumulate_params,
                                                       fnet_features, data, target, variation, opt_state)
-            # log_train_batch_loss.append(loss)
-        # train_loss = mean_loss(params, train_input, train_image)
-        # test_loss = mean_loss(params, test_input, image)
-        # log_train_loss.append(train_loss)
         if not epoch % 10 and epoch:
-            # pure_test_loss = batchless_mean_loss(params, pure_test_input, pure_test_image)
             train_loss = mean_loss(params, K, f_layer_accumulate_params, fnet_features,
                                    encoder, grid_input, images, batch_size)
-            # test_loss = mean_loss(params, test_input, image)
             hundred_epoch_time = time.time() - start_time
             print("Epoch {} | Time: {:0.2f} | Train: {:0.7f}".format(epoch, hundred_epoch_time, train_loss))
             start_time = time.time()
@@ -250,12 +192,6 @@ def run_training_loop(num_epochs, opt_state, params, encoder, K):
                 imshow(one_image_prediction(params, encoder, K, f_layer_accumulate_params, fnet_features, images[2],
                                                 grid_input))
                 imshow(images[2].reshape((32, 32, 3)))
-                # imshow(pure_prediction(params, pure_test_input))
-                # imshow(pure_test_image.reshape((50,50,3)))
-                # predicted = prediction(params, test_input)
-                # output = predicted.at[50:100,50:100].set(0)
-                # print(prediction(params, test_input))
-                # print(prediction(params, train_input))
         for i in range(1, len(epoch_boundries) - 1):
             if epoch == epoch_boundries[i]:
                 batch_size = batch_sizes[i]
@@ -265,20 +201,8 @@ def run_training_loop(num_epochs, opt_state, params, encoder, K):
 
 print(jax.devices(), 'devices')
 data_path = 'cifar10/'
-
-# lsun_dataloader, grid_input = load_lsun_bedroom('')
-
-# Decide which device we want to run on
 device = torch.device("cuda:0" if (torch.cuda.is_available()) else "cpu")
-
-# Plot some training images
-# images, token = next(iter(lsun_dataloader))
-# print(images.shape, token)
-# print(images.max(), images.min())
-# imshow(images[0])
-# print(len(lsun_dataloader))
 train_and_test = False
-
 images, grid_input = load_cifar10(data_path, key, train_and_test)
 has_encoder = True
 latent_size = 110
@@ -287,14 +211,6 @@ encoder = (32*32*3, 1200, 600, latent_size)
 print(encoder)
 fnet_features = (2,) + tuple([6 for i in range(10)]) + (3,)
 params, K, f_layer_accumulate_params, encoder_params = initialize_fnet(decoder, fnet_features, key, encoder)
-
-# print(cumu, 'size')
-
-# Define an optimizer in Jax
-# first_step_size = 2e-4  # Caution ⚠️: Larger network ---> Smaller step size
-# second_step_size = 5e-5
-# opt_init, opt_update, get_params = optax.adam(step_size)    # Larger b1 ---> Steeper loss decay at first epochs
-# opt_state = opt_init((params, embedding))
 latent_noise = 1e-4
 sigmas = [3e-3, 4e-3, 5e-3, 6e-3, 7e-3, 7.3e-3, 7.6e-3, 8e-3, 8.3e-3,
           8.6e-3, 9e-3, 1e-2, 1.3e-2, 1.6e-2, 2e-2]
@@ -316,18 +232,11 @@ encoder_schedule_last_coef = 5e-4
 encoder_schedule = np.linspace(encoder_schedule_first_coef,
                                encoder_schedule_last_coef,
                                num=sum(num_train_steps))
-# encoder_schedule = lambda x : ((encoder_schedule_last_coef -
-#                                 encoder_schedule_first_coef)/sum(num_train_steps)) \
-#                               * x + encoder_schedule_first_coef
 multiple_schedulers_encoder = lambda i : multiple_schedulers(i) * encoder_schedule[i]
 optimizer = optax.multi_transform(
     {'decoder_params': optax.adam(learning_rate=multiple_schedulers),
      'encoder_params': optax.adam(learning_rate=multiple_schedulers_encoder)},
     param_labels)
-
-# learning_rate_function = optax.linear_schedule(init_value=step_size, end_value=step_size/100,
-#                                                    transition_steps=num_train_steps)
-# print(learning_rate_function(num_train_steps/2), 'learning_rate_function')
 
 if has_encoder:
     opt_state = optimizer.init((params, encoder_params))
