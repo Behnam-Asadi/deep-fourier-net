@@ -157,24 +157,6 @@ def load_cifar10(data_path, key, train_and_test = True):
     images = train_data.reshape(-1, 32 * 32, 3)
 
     grid_input = np.array([[i, j] for i in range(32) for j in range(32)])
-    # path = 'cifar10_png/'
-    # isExist = os.path.exists(path)
-    # if not isExist:
-    #     os.makedirs(path)
-    # for i in range(train_data.shape[0]):
-    #     name = path + str(i) + '.png'
-    #     imsave(train_data[i].reshape((32, 32, 3)), name)
-    # path = 'cifar10_jpeg/'
-    # isExist = os.path.exists(path)
-    # if not isExist:
-    #     os.makedirs(path)
-    # for i in range(train_data.shape[0]):
-    #     name = path + str(i) + '.jpeg'
-    #     imsave(train_data[i].reshape((32, 32, 3)), name)
-    print(train_data.shape)
-    # images = jax.device_put_replicated(images, jax.local_devices())
-    # embedding = jax.device_put_replicated(embedding, jax.local_devices())
-    # grid_input = jax.device_put_replicated(grid_input, jax.local_devices())
     print(images.shape, grid_input.shape)
     print(images.dtype, grid_input.dtype)
     print(np.max(images), np.min(images))
