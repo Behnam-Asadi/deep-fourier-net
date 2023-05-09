@@ -52,10 +52,6 @@ def flags():
     opt = parser.parse_args()
     print(opt)
 
-
-
-
-
 def imshow(img):
     # plt.imshow(img + 0.5, cmap='gray')
     plt.imshow(img / 2 + 0.5)
