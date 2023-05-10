@@ -29,7 +29,11 @@ each pixel as input of the model and output is the value of that pixel.
 # Results
 
 <div align="center">
-<img  src="src/img/ImagenetDog.png"  align = 'center' height="400">
+<img  src="src/img/Ours_vs_JPEG_2.png"  align = 'center' height="400">
+  <figcaption>Comparison between our model and JPEG algorithm. The width and depth of
+our model in this experiment are 8 and 6 respectively. A lossy JPEG algorithm with almost
+the same compression rate has been used to compress the original image.</figcaption>
 </div>
+
 
 
