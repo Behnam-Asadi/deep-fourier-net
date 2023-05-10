@@ -29,7 +29,7 @@ each pixel as input of the model and output is the value of that pixel.
 # Results
 
 <div align="center">
-<img  src="src/img/ImagenetDog.png"  align = 'center' width="400" height="500">
+<img  src="src/img/ImagenetDog.png"  align = 'center' width="1000" height="500">
 </div>
 
 
