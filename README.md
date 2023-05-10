@@ -1,14 +1,3 @@
----
-title: "Earthquake Analysis"
-author: "Behnam"
-date: "`r Sys.time()`"
-output:
-  prettydoc::html_pretty:
-    fig_width: 10
-    theme: leonids
-    highlight: github
----
-
 # Abstract
 
 A generative model models the generation of data in the real world. It explains how data is created in terms of a probabilistic model. Image editing, visual domain adaptation, data augmentation for discriminative models, and assisted creative production are all examples of generative models.
