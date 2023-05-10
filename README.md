@@ -28,4 +28,8 @@ each pixel as input of the model and output is the value of that pixel.
 
 # Results
 
+<div align="center">
+<img  src="src/img/ImagenetDog.png"  align = 'center'>
+</div>
+
 ![Example Image](src/img/ImagenetDog.png)
