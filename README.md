@@ -28,6 +28,10 @@ each pixel as input of the model and output is the value of that pixel.
 
 # Results
 
+
+<div align="center">
+<img  src="src/img/Ours_vs_JPEG_1.png"  align = 'center'>
+</div>
 <div align="center">
 <img  src="src/img/Ours_vs_JPEG_2.png"  align = 'center'>
   <figcaption>Comparison between our model and JPEG algorithm. The width and depth of
