@@ -19,7 +19,7 @@ In the first step, we will show that it is possible to compress images in a netw
 consists of a composition of many low-frequency sine and cosine functions in a relatively
 low dimensional space. This network is trained on just one image. It treats each image as
 a 2-dimensional function. It gets the position of each pixel of an image and outputs the
-corresponding pixel value —either a scalar for a black-and-white image or an RGB value
+corresponding pixel value — either a scalar for a black-and-white image or an RGB value
 for a colour image. After the training process is done, the weights of the network are a
 compressed copy of the input image, which means that instead of the image itself, we can
 save the network and use it to reconstruct the image. Also, not that reconstruction is fast
