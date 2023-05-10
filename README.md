@@ -14,3 +14,14 @@ If all images in a dataset could be assigned to separate points in our proposed 
 - Proposing a novel image generative model that relies on the same idea behind the compression task.
 
 # Image Compression
+
+In the first step, we will show that it is possible to compress images in a network that
+consists of a composition of many low-frequency sine and cosine functions in a relatively
+low dimensional space. This network is trained on just one image. It treats each image as
+a 2-dimensional function. It gets the position of each pixel of an image and outputs the
+corresponding pixel value —either a scalar for a black-and-white image or an RGB value
+for a colour image. After the training process is done, the weights of the network are a
+compressed copy of the input image, which means that instead of the image itself, we can
+save the network and use it to reconstruct the image. Also, not that reconstruction is fast
+and can be done in parallel for each pixel. To reconstruct the image, we give the position of
+each pixel as input of the model and output is the value of that pixel.
