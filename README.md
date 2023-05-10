@@ -1,10 +1,12 @@
 # deep-fourier-net
-Image Generation and Compression
+\bold{Absract}
 
 A generative model models the generation of data in the real world. It explains how data
 is created in terms of a probabilistic model. Image editing, visual domain adaptation, data
 augmentation for discriminative models, and assisted creative production are all examples of
-generative models. To be specific, datasets often have fewer data points in some sections of
+generative models.
+
+To be specific, datasets often have fewer data points in some sections of
 their domain, which might reduce model performance if not handled appropriately. Generative
 models may be used to modify datasets and upsample low-density areas. This is particularly
 beneficial for skewed datasets and simulated data settings. In addition to that, in a wide range
