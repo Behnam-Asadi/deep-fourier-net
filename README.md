@@ -25,3 +25,7 @@ compressed copy of the input image, which means that instead of the image itself
 save the network and use it to reconstruct the image. Also, not that reconstruction is fast
 and can be done in parallel for each pixel. To reconstruct the image, we give the position of
 each pixel as input of the model and output is the value of that pixel.
+
+# Results
+
+![Example Image](src/img/ImagenetDog.png)
