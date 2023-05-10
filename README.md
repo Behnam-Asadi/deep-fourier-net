@@ -14,3 +14,5 @@ If all images in a dataset could be assigned to separate points in our proposed 
 
 - Introducing a unique Fourier-based algorithm for the lossy image compression task with an adjustable compression rate.
 - Proposing a novel image generative model that relies on the same idea behind the compression task.
+
+# Image Compression
