@@ -32,6 +32,8 @@ of i_th layer in this network.
 </div>
 where <b>k</b> &isin; {0,1}<sup>m</sup> and m is the width of the layer.
 
+We also use MSE loss to compare output of our model to the original image.
+
 # Results
 
 
