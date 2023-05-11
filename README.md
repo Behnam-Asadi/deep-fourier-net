@@ -30,7 +30,7 @@ of i_th layer in this network.
 <div align="center">
 <img src = "src/img/FNETLayerEquation.svg" alt="My FNET Layer" class="center"/>
 </div>
-
+where <b>k</b> &isin {0,1}<sup>m</sup> and m is the width of the layer.
 
 # Results
 
