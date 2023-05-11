@@ -29,13 +29,14 @@ and can be done in parallel for each pixel. To reconstruct the image, we give th
 each pixel as input of the model and output is the value of that pixel. Following is the equation
 of i_th layer in this network.
 
+We also use MSE loss to compare output of our model to the original image.
+
 <div align="center">
 <img src = "src/img/FNETLayerEquation.svg" alt="My FNET Layer" class="center"/>
 </div>
 where <b>k</b> &isin; {0,1}<sup>m</sup>. The dimension of the layer, which we will alternately
 refer to as its width, is denoted by m.
 
-We also use MSE loss to compare output of our model to the original image.
 
 # Results
 
@@ -65,3 +66,7 @@ Different images that have different embeddings will have different decoder outp
 which would lead to different reconstructed images. If the latent space is regulated enough, 
 any point there could potentially be mapped to a realistic image, and after the model is trained, 
 we can use any point in the low-dimensional latent space to generate a new image in the original high-dimensional space.
+
+We also add the log-likelihood of each latent representation coming from 
+a Gaussian distribution time by a constant—which is a hyperparameter—to the MSE loss function 
+to make the latent space normal.
