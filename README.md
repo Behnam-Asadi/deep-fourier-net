@@ -43,7 +43,7 @@ We also use MSE loss to compare output of our model to the original image.
 </div>
 <div align="center">
 <img  src="src/img/Ours_vs_JPEG_2.png"  align = 'center'>
-  <figcaption>Comparison between our model and JPEG algorithm. The width and depth of
+  <figcaption>Comparison between our model and JPEG algorithm on ImageNet dataset. The width and depth of
 our model in this experiment are 8 and 6 respectively. A lossy JPEG algorithm with almost
 the same compression rate has been used to compress the original image.</figcaption>
 </div>
