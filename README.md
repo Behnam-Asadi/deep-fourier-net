@@ -48,5 +48,18 @@ our model in this experiment are 8 and 6 respectively. A lossy JPEG algorithm wi
 the same compression rate has been used to compress the original image.</figcaption>
 </div>
 
+# Image generation
 
+After we found out that it is possible to reduce the dimension of images with this network
+without losing much quality, we tried to use it in an image generation model. Note that 
+the main idea of many image generation models is to compress high-dimensional images into 
+low-dimensional spaces.
 
+In our generation model, we try to further explore the lower-dimensional 
+structure in natural images. We use another deep neural network as a decoder to generate
+all the above Fourier coefficients, i.e., <b>a<sub>k</sub></b>'s and <b>b<sub>k</sub></b>’s, from 
+an even smaller set of parameters in a low-dimensional latent space. 
+Different images that have different embeddings will have different decoder outputs, 
+which would lead to different reconstructed images. If the latent space is regulated enough, 
+any point there could potentially be mapped to a realistic image, and after the model is trained, 
+we can use any point in the low-dimensional latent space to generate a new image in the original high-dimensional space.
