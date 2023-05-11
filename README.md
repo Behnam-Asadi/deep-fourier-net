@@ -27,8 +27,9 @@ and can be done in parallel for each pixel. To reconstruct the image, we give th
 each pixel as input of the model and output is the value of that pixel. Following is the equation
 of each layer in this network.
 
+<div align="center">
 <img src = "src/img/FNETLayerEquation.svg" alt="My FNET Layer"/>
-
+</div>
 
 
 # Results
