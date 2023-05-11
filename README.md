@@ -30,8 +30,8 @@ of i_th layer in this network.
 <div align="center">
 <img src = "src/img/FNETLayerEquation.svg" alt="My FNET Layer" class="center"/>
 </div>
-where <b>k</b> &isin; {0,1}<sup>m</sup> and m is the dimension of the layer which we 
-alternatively will call width of that layer.
+where <b>k</b> &isin; {0,1}<sup>m</sup>. The dimension of the layer, which we will alternately
+refer to as its width, is denoted by m.
 
 We also use MSE loss to compare output of our model to the original image.
 
