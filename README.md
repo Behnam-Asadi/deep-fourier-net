@@ -28,7 +28,7 @@ each pixel as input of the model and output is the value of that pixel. Followin
 of each layer in this network.
 
 <div align="center">
-<img src = "src/img/FNETLayerEquation.svg" alt="My FNET Layer"/>
+<img src = "src/img/FNETLayerEquation.svg" alt="My FNET Layer" class="center"/>
 </div>
 
 
