@@ -70,3 +70,12 @@ we can use any point in the low-dimensional latent space to generate a new image
 We also add the log-likelihood of each latent representation coming from 
 a Gaussian distribution time by a constant—which is a hyperparameter—to the MSE loss function 
 to make the latent space normal.
+
+In the training process, we found out that large networks are unstable to train. Our
+solution to this problem was to add an encoder before the latent representation. Instead of
+randomly initializing z, we pass each image to an encoder then we use the output as the
+latent representation of the image. Using this structure, not only large networks are stabilized
+but also similar images have similar latent representations even at the beginning of training,
+which speeds up the training process. Similar to the decoder, we employed an MLP as the encoder 
+in our model. We only utilize an encoder when training on the CIFAR-10 dataset, whereas we do not 
+employ an encoder for the MNIST dataset.
