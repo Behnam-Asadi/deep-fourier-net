@@ -43,7 +43,7 @@ We also use MSE loss to compare output of our model to the original image.
 <div align="center">
 <img  src="src/img/MNIST_Embedded_2.png"  align = 'center'>
   <figcaption>Original images and their reconstructed version using the our model trained on all MNIST dataset. We can see that images has been embedded in the latent space almost prefectly which means that square loss of the training is close to zero - excluding log-likelihood part..</figcaption>
-</div>
+</div><br>
 <br>
 
 <div align="center">
