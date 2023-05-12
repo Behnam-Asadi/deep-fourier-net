@@ -139,11 +139,21 @@ the decoder and get the output from Fourier Net.</figcaption>
 <br><br>
 
 <div align="center">
-<img  src="src/img/CIFAR_Embedded_1.png"  align = 'center' width="700">
+<img  src="src/img/CIFAR10_Embedded_1.png"  align = 'center' width="700">
 </div>
 <div align="center">
-<img  src="src/img/CIFAR_Embedded_2.png"  align = 'center' width="700">
+<img  src="src/img/CIFAR10_Embedded_2.png"  align = 'center' width="700">
   <figcaption><br>Original images and their reconstructed version using the our model trained on
 CIFAR10 dataset. Images have been embedded in the latent space with a small quality loss.</figcaption>
 </div>
 <br><br>
+
+<div align="center">
+<img  src="src/img/CIFAR10_Generated_1.png"  align = 'center' width="700">
+</div>
+<div align="center">
+<img  src="src/img/CIFAR10_Generated_2.png"  align = 'center' width="700">
+  <figcaption><br>Random images sampled from our model trained on CIFAR10 dataset..</figcaption>
+</div>
+
+
