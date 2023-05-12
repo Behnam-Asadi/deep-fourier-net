@@ -120,3 +120,11 @@ number 7 images of that dataset.</figcaption>
   <figcaption><br>Random images sampled from our model trained on full MNIST dataset.</figcaption>
 </div>
 <br><br>
+
+<div align="center">
+<img  src="src/img/MNIST_Interpolation.png"  align = 'center' width="700">
+  <figcaption><br>nterpolation between different integers from 0 to 9. We start from one image
+latent representation and as we go toward the next one in the latent space, we feed that to
+the decoder and get the output from Fourier Net.</figcaption>
+</div>
+<br><br>
