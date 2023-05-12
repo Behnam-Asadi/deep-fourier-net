@@ -155,5 +155,26 @@ CIFAR10 dataset. Images have been embedded in the latent space with a small qual
 <img  src="src/img/CIFAR10_Generated_2.png"  align = 'center' width="700">
   <figcaption><br>Random images sampled from our model trained on CIFAR10 dataset..</figcaption>
 </div>
-
-
+<br><br><br><br>
+<table>
+  <tr>
+    <th><b>Model</b></th>
+    <th><b>FID</b></th> 
+  </tr>
+  <tr>
+    <td>VAE/td>
+    <td>106.0</td> 
+  </tr>
+  <tr>
+    <td>WAE</td>
+    <td>80.9</td> 
+  </tr>
+  <tr>
+    <td>DCGAN</td>
+    <td>30.9</td> 
+  </tr>
+  <tr>
+    <td>Fourier Net (ours)</td>
+    <td>80.5</td> 
+  </tr>
+</table>
