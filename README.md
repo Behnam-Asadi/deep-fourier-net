@@ -186,15 +186,17 @@ CIFAR10 dataset. Images have been embedded in the latent space with a small qual
 </table>
 </div>
 
-<table>
-  <caption>Caption Text</caption>
-  <tr>
-    <th>Header 1</th>
-    <th>Header 2</th>
-  </tr>
-  <tr>
-    <td>Data 1</td>
-    <td>Data 2</td>
-  </tr>
-  <!-- Additional table rows -->
-</table>
+<div>
+  <table>
+    <tr>
+      <th>Header 1</th>
+      <th>Header 2</th>
+    </tr>
+    <tr>
+      <td>Data 1</td>
+      <td>Data 2</td>
+    </tr>
+    <!-- Additional table rows -->
+  </table>
+  <p>Caption Text</p>
+</div>
