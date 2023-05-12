@@ -102,3 +102,20 @@ prefectly which means that square loss of the training is close to zero - exclud
 part.</figcaption>
 </div>
 
+
+<div align="center">
+<img  src="src/img/MNIST_2_Generated.png"  align = 'center' width="700">
+</div>
+<div align="center">
+<img  src="src/img/MNIST_7_Generated.png"  align = 'center' width="700">
+  <figcaption><br>Random images generated using our model trained on (a) number 2 and (b)
+number 7 images of that dataset.</figcaption>
+</div>
+
+<div align="center">
+<img  src="src/img/MNIST_Generated_1.png"  align = 'center' width="700">
+</div>
+<div align="center">
+<img  src="src/img/MNIST_Generated_2.png"  align = 'center' width="700">
+  <figcaption><br>Random images sampled from our model trained on full MNIST dataset.</figcaption>
+</div>
