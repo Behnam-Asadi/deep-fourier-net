@@ -128,3 +128,22 @@ latent representation and as we go toward the next one in the latent space, we f
 the decoder and get the output from Fourier Net.</figcaption>
 </div>
 <br><br>
+
+<div align="center">
+<img  src="src/img/MNIST_Generated_1.png"  align = 'center' width="700">
+</div>
+<div align="center">
+<img  src="src/img/MNIST_Generated_2.png"  align = 'center' width="700">
+  <figcaption><br>Random images sampled from our model trained on full MNIST dataset.</figcaption>
+</div>
+<br><br>
+
+<div align="center">
+<img  src="src/img/CIFAR_Embedded_1.png"  align = 'center' width="700">
+</div>
+<div align="center">
+<img  src="src/img/CIFAR_Embedded_2.png"  align = 'center' width="700">
+  <figcaption><br>Original images and their reconstructed version using the our model trained on
+CIFAR10 dataset. Images have been embedded in the latent space with a small quality loss.</figcaption>
+</div>
+<br><br>
