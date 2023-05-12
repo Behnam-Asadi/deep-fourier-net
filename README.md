@@ -182,10 +182,6 @@ CIFAR10 dataset. Images have been embedded in the latent space with a small qual
   <td colspan="3" class="cap foot">
          FID comparison between different models trained on CIFAR10 dataset.
     </td>
-    <tr>
-    <td colspan="3" class="cap foot">
-        some footer caption text
-    </td>
   </tr>
 </table>
 </div>
