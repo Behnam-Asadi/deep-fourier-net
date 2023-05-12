@@ -153,7 +153,7 @@ CIFAR10 dataset. Images have been embedded in the latent space with a small qual
 </div>
 <div align="center">
 <img  src="src/img/CIFAR10_Generated_2.png"  align = 'center' width="700">
-  <figcaption><br>Random images sampled from our model trained on CIFAR10 dataset..</figcaption>
+  <figcaption><br>Random images sampled from our model trained on CIFAR10 dataset.</figcaption>
 </div>
 <br><br><br><br>
 <div align="center">
@@ -179,4 +179,5 @@ CIFAR10 dataset. Images have been embedded in the latent space with a small qual
     <td>80.5</td> 
   </tr>
 </table>
+<figcaption><br>FID comparison between different models trained on CIFAR10 dataset.</figcaption>
 </div>
