@@ -92,11 +92,11 @@ employ an encoder for the MNIST dataset.
 
 
 <div align="center">
-<img  src="src/img/MNIST_Embedded_1.png"  align = 'center'>
+<img  src="src/img/MNIST_Embedded_1.png"  align = 'center' width="700">
 </div>
 <div align="center">
-<img  src="src/img/MNIST_Embedded_2.png"  align = 'center'>
-  <figcaption>Original images and their reconstructed version using the our model trained on
+<img  src="src/img/MNIST_Embedded_2.png"  align = 'center' width="700">
+  <figcaption><br>Original images and their reconstructed version using the our model trained on
 all MNIST dataset. We can see that images has been embedded in the latent space almost
 prefectly which means that square loss of the training is close to zero - excluding log-likelihood
 part.</figcaption>
