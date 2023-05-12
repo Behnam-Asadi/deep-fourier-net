@@ -88,3 +88,5 @@ employ an encoder for the MNIST dataset.
     is the input position of each pixel, and (r, g, b) is output of network for each pixel of each image.</figcaption>
 </div>
 
+# Results
+
