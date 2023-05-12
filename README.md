@@ -82,7 +82,7 @@ employ an encoder for the MNIST dataset.
 
 <div align="center">
 <img  src="src/img/OurModel.png"  align = 'center'>
-  <figcaption>Our Model without (left image) and with (right image) an encoder.
+  <figcaption><br>Our Model without (left image) and with (right image) an encoder.
     <b>z</b> is the latent representation of each image, <b>A</b> and  <b>B</b> are the set of all
     <b>a<sub>k</sub></b>'s and <b>b<sub>k</sub></b>’s of each image, (x<sub>1</sub>, x<sub>2</sub>)
     is the input position of each pixel, and (r, g, b) is output of network for each pixel of each image.</figcaption>
