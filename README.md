@@ -156,13 +156,14 @@ CIFAR10 dataset. Images have been embedded in the latent space with a small qual
   <figcaption><br>Random images sampled from our model trained on CIFAR10 dataset..</figcaption>
 </div>
 <br><br><br><br>
+<div align="center">
 <table>
   <tr>
     <th><b>Model</b></th>
     <th><b>FID</b></th> 
   </tr>
   <tr>
-    <td>VAE/td>
+    <td>VAE</td>
     <td>106.0</td> 
   </tr>
   <tr>
@@ -178,3 +179,4 @@ CIFAR10 dataset. Images have been embedded in the latent space with a small qual
     <td>80.5</td> 
   </tr>
 </table>
+</div>
