@@ -42,10 +42,10 @@ refer to as its width, is denoted by m.
 
 
 <div align="center">
-<img  src="src/img/Ours_vs_JPEG_1.png"  align = 'center'>
+<img  src="src/img/Ours_vs_JPEG_1.png"  align = 'center' width="400">
 </div>
 <div align="center">
-<img  src="src/img/Ours_vs_JPEG_2.png"  align = 'center'>
+<img  src="src/img/Ours_vs_JPEG_2.png"  align = 'center' width="400">
   <figcaption>Comparison between our model and JPEG algorithm on ImageNet dataset. The width and depth of
 our model in this experiment are 8 and 6 respectively. A lossy JPEG algorithm with almost
 the same compression rate has been used to compress the original image.</figcaption>
