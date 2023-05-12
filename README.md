@@ -178,9 +178,9 @@ CIFAR10 dataset. Images have been embedded in the latent space with a small qual
     <td>Fourier Net (ours)</td>
     <td>80.5</td> 
   </tr>
+  <tr>
   <td colspan="3" class="cap foot">
          FID comparison between different models trained on CIFAR10 dataset.
     </td>
 </table>
-<figcaption><br>FID comparison between different models trained on CIFAR10 dataset.</figcaption>
 </div>
