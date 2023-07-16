@@ -171,7 +171,7 @@ CIFAR10 dataset. Images have been embedded in the latent space with a small qual
     <td>80.9</td> 
   </tr>
   <tr>
-    <td>DCGAN</td>
+    <td>DCGAN (Convolutional Based)</td>
     <td>30.9</td> 
   </tr>
   <tr>
